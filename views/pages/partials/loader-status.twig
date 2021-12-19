@@ -1,0 +1,24 @@
+{% if next_page %}
+    <div class="text-center loading-status-wrapper">
+        <div class="loader-status loader" style="display: none">
+            <p class="infinite-scroll-last font-sm color-grey no-m center">{{ trans('common.elements.end_of_content') }}</p>
+            <p class="infinite-scroll-error font-sm color-grey no-m center">{{ trans('common.elements.failed_to_load_more') }}</p>
+        </div>
+
+        <a href="{{ next_page }}" class="btn btn-outline-dark pagination__next px-11 py-2.5 relative">
+            <span class="fix-align">{{ trans('common.elements.load_more') }}</span>
+        </a>
+    </div>
+{% endif %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        salla.event.on('infiniteScroll::request', function () {
+            //document.querySelector('.loading-status-wrapper .spinner-loader-wrap').classList.remove('hidden');
+        })
+
+        salla.event.on('infiniteScroll::load', function () {
+            document.querySelector('.loading-status-wrapper .loader-status').style.display='none';
+        })
+    });
+</script>

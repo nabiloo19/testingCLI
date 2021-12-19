@@ -1,0 +1,18 @@
+{
+  "common": {
+    "remember_my_choice": "لا تذكرني مرة اخرى"
+  },
+  "blocks": {
+    "header": {
+      "cart": "Cart"
+    }
+  },
+  "pages": {
+    "cart": {
+      "free_shipping": "Free Shipping"
+    },
+    "products": {
+      "offer_expires_in": "Offer valid until"
+    }
+  }
+}

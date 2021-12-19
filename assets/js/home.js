@@ -1,0 +1,1 @@
+window.fslightbox = require('fslightbox');

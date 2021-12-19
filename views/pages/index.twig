@@ -1,0 +1,12 @@
+{#
+| Variable         | Type       | Description                                                         | @see |
+|------------------|------------|---------------------------------------------------------------------|------|
+| is_home=true     | bool       | shared variable in all layout, index.twig, and all components views |      |
+#}
+{% extends "layouts.master" %}
+{% block content %}
+    {% component home %}
+{% endblock %}
+{% block scripts %}
+    <script type="text/javascript" defer src="{{ asset('dist/home.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% for option_index, option in product.options %}
+    {% if option.option_type=='color' %}
+
+        <section class="bg-white p-5 rounded-md mb-5">
+            <h2 class="text-sm font-bold mb-4">{{ option.name }}</h2>
+            <div class="custom-radios custom-radios--rounded">
+                {% for  detail in  option.details %}
+                    <div class="me-8 mb-8">
+                        <input {{ option.is_selected(detail.id)?'checked':'' }}
+                                {% if not is_cart %}
+                                    data-on-change="product-price" data-allow-default
+                                {% endif %}
+                                {{ detail.has_quantity(product) ? '':'disabled' }}
+                                name="options[{{ option.id }}]"
+                                value="{{ detail.id }}"
+                                id="color_option_{{ detail.id }}-{{ product.id }}"
+                                type="radio"/>
+                        <label class="flex flex-col items-center" for="color_option_{{ detail.id }}-{{ product.id }}">
+                            <span style="background-color: {{ detail.option_value }}" class="mb-2"></span>
+                            <p class="text-sm text-gray-400">{{ detail.name }}</p>
+                        </label>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+
+    {% elseif option.option_type=='image' %}
+
+        <section class="bg-white p-5 rounded-md mb-5">
+            <h2 class="text-sm font-bold mb-4">{{ option.name }}</h2>
+            <div class="radio-images"
+                 data-productid="{{ product.id }}"
+                 data-option_id="{{ detail.id }}"
+                 data-product-name="{{ product.name }}">
+                {% for detail_index, detail in option.details %}
+                    <input {{ option.is_selected(detail.id)?'checked':'' }}
+                            type="radio"
+                            class="image-option"
+                            id="option_{{ detail.id }}-{{ product.id }}"
+                            {{ detail.has_quantity(product)?'':'disabled' }}
+                            data-productid="{{ product.id }}"
+                            data-itemid="{{ detail.id }}"
+                            name="options[{{ option.id }}]"
+                            data-img-id="{{ detail.option_value }}"
+                            value="{{ detail.id }}"/>
+                    <label for="option_{{ detail.id }}-{{ product.id }}" data-slideIndex="{{ detail_index + 1 }}"
+                           class="go-to-slide inline-block me-3 mb-2.5 cursor-pointer rounded-md overflow-hidden h-20 w-24">
+
+                        <img data-src="{{ detail.image }}" class="object-cover h-full lazy-load"
+                             title="{{ detail.name }}"
+                             alt="{{ detail.name }}"/>
+                    </label>
+                {% endfor %}
+            </div>
+        </section>
+
+    {% else %}
+
+        <section class="bg-white p-5 rounded-md mb-5">
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start mb-5">
+                <label for="product-color" class="form-label">
+                    <b class="block">
+                        {{ option.name }}
+                        <span class="text-red-500">*</span>
+                    </b>
+                </label>
+                <div class="mt-1 sm:mt-0 sm:col-span-2">
+                    <select class="form-input appearance-none"
+                            name="options[{{ option.id }}]"
+                            data-option="{{ option.id }}"
+                            {{ attirubtes|raw }}>
+                        {% for key,detail in option.details %}
+                            <option {{ option.is_selected(detail.id) ? "selected" : "" }} value="{{ detail.id }}">
+                                {{ detail.full_name(option.product) }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </section>
+
+    {% endif %}
+{% endfor %}

@@ -1,0 +1,165 @@
+{
+    "version": "1.0.0",
+    "theme_name": "Test-002",
+    "repo_url": "https://github.com/nabiloo19/testingCLI",
+    "features": [
+        "mega-menu",
+        "fonts",
+        "color",
+        "breadcrumb",
+        "unite-cards-height",
+        "component-featured-products",
+        "component-fixed-banner",
+        "component-fixed-products",
+        "component-photos-slider",
+        "component-products-slider",
+        "component-parallax-background",
+        "component-random-testimonials",
+        "component-testimonials",
+        "component-square-photos",
+        "component-store-features",
+        "component-youtube"
+    ],
+    "settings": [
+        {
+            "type": "boolean",
+            "label": "شريط علوي داكن",
+            "id": "topnav_is_dark",
+            "format": "switch",
+            "value": true
+        }
+    ],
+    "components": [
+        {
+            "name": "enhanced-slider",
+            "title": "صور متحركة (محسنة)",
+            "icon": "sicon-image-carousel",
+            "path": "home.enhanced-slider",
+            "fields": [
+                {
+                    "id": "images",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 10,
+                    "fields": [
+                        {
+                            "id": "image",
+                            "type": "string",
+                            "format": "image"
+                        },
+                        {
+                            "id": "title",
+                            "type": "string",
+                            "label": "عنوان رئيسي (إختياري)"
+                        },
+                        {
+                            "id": "sub_title",
+                            "type": "string",
+                            "format": "textarea",
+                            "label": "نص توضيحي (إختياري)"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "main-links",
+            "title": "روابط سريعة",
+            "icon": "sicon-layout-grid-rearrange",
+            "path": "home.main-links",
+            "fields": [
+                {
+                    "id": "title",
+                    "type": "string",
+                    "label": "test someThing",
+                    "placeholder": "Placeholder text ..",
+                    "minLength": 6,
+                    "maxLength": 30,
+                    "required": false
+                },
+                {
+                    "id": "links",
+                    "type": "collection",
+                    "fields": [
+                        {
+                            "id": "icon",
+                            "type": "string",
+                            "format": "image"
+                        },
+                        {
+                            "id": "url",
+                            "type": "string",
+                            "format": "url",
+                            "inputType": "url"
+                        },
+                        {
+                            "id": "title",
+                            "type": "string",
+                            "label": "عنوان الرابط"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "brands",
+            "title": "الماركات التجارية",
+            "icon": "sicon-award-ribbon",
+            "path": "home.brands",
+            "fields": [
+                {
+                    "id": "brands",
+                    "type": "items",
+                    "label": "العلامات التجارية",
+                    "format": "dropdown-list",
+                    "multichoice": true,
+                    "required": true,
+                    "source": "Brands"
+                }
+            ]
+        },
+        {
+            "name": "slider-products-with-header",
+            "title": "منتجات متحركة مع خلفية",
+            "icon": "sicon-list-play",
+            "path": "home.slider-products-with-header",
+            "fields": [
+                {
+                    "id": "products",
+                    "type": "items",
+                    "icon": "sicon-list",
+                    "label": "المنتجات",
+                    "format": "dropdown-list",
+                    "required": true,
+                    "source": "Products",
+                    "multichoice": true
+                }
+            ]
+        },
+        {
+            "name": "enhanced-square-images",
+            "title": "صور ثابتة (محسنة)",
+            "icon": "sicon-image",
+            "path": "home.enhanced-square-images",
+            "fields": [
+                {
+                    "id": "products",
+                    "type": "items",
+                    "icon": "sicon-list",
+                    "label": "المنتجات",
+                    "format": "dropdown-list",
+                    "required": true,
+                    "source": "Products"
+                }
+            ]
+        }
+    ],
+    "support_url": "https://salla.dev",
+    "theme_id": "",
+    "defaults": {
+        "primary-color": "#dddddd",
+        "secondary-color": "#cccccc"
+    }
+}

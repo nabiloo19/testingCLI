@@ -1,0 +1,158 @@
+.feature-box {
+	&:hover {
+		.slide-anime-icon {
+			i {
+				animation: toRightFromLeft 0.3s forwards;
+			}
+		}
+	}
+}
+
+.banner {
+	@media screen and (min-width: 768px) {
+		&:hover {
+			.banner__title {
+				animation: toTopFromBottom 0.9s;
+			}
+
+			.banner__description {
+				animation: delayKeyframe 0.3s, toTopFromBottom 0.9s 0.3s;
+			}
+		}
+	}
+}
+
+.full-banner-block {
+	&::after,
+	&::before {
+		height: 100%;
+		width: 100%;
+		top: 0;
+		right: -93%;
+		content: "";
+		background: var(--main-color);
+		position: absolute;
+		transition: all 0.3s ease-in-out;
+		transform: rotate(220deg) translateY(-50%) translateX(33%);
+		opacity: 0.25;
+	}
+
+	&::before {
+		background: #fff;
+		right: auto;
+		transform: rotate(220deg) translateY(-40%) translateX(0);
+
+		[dir="ltr"] & {
+			left: -52%;
+		}
+	}
+
+  @media (max-width: 1330px){
+    &::after {
+      top: -50%;
+    }
+  }
+
+  @media (max-width: 480px){
+    &::before {
+      top: 20%;
+    }
+
+    &::after{
+      top: -80%;
+    }
+  }
+}
+
+/*
+  Tabs Block
+*/
+
+.s-block--tabsProdutcs,
+.s-block--specialProducts{
+  &:not(.tabs-initialized){
+    .tabs-wrapper > div:not(:first-child){
+      display: none;
+    }
+  }
+}
+
+
+/*
+* Home block spacing situations -----------------------------
+*/
+
+// Footer top spacing
+.s-block{
+  &--hero-slider,
+  &--full-banner,
+  &--tabsProdutcs,
+  &--logos-slider,
+  &--slider-with-bg{
+    + #footer{
+      padding-top: 0;
+    }
+  }
+}
+
+// hero top spacing
+.s-block{
+  &--full-banner,
+  &--tabsProdutcs,
+  &--logos-slider,
+  &--slider-with-bg{
+    + .s-block--hero-slider{
+      margin-top: 0;
+    }
+  }
+}
+
+// promotion top spacing
+.s-block{
+  &--hero-slider,
+  &--tabsProdutcs,
+  &--logos-slider,
+  &--slider-with-bg{
+    + .s-block--full-banner{
+      margin-top: 0;
+    }
+  }
+}
+
+// brands top spacing
+.s-block{
+  &--hero-slider,
+  &--tabsProdutcs,
+  &--full-banner,
+  &--slider-with-bg{
+    + .s-block--logos-slider{
+      margin-top: 0;
+    }
+  }
+}
+
+// tabs top spacing
+.s-block{
+  &--hero-slider,
+  &--logos-slider,
+  &--full-banner,
+  &--slider-with-bg{
+    + .s-block--tabsProdutcs{
+      margin-top: 0;
+    }
+  }
+}
+
+// slider products with bg, top spacing
+.s-block{
+  &--hero-slider,
+  &--tabsProdutcs,
+  &--logos-slider,
+  &--full-banner{
+    + .s-block--slider-with-bg{
+      margin-top: 0;
+    }
+  }
+}
+
+
